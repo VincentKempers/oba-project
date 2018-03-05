@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background-color: rgba(247, 236, 195, 1.000);
+}
+
+#images {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+section {
+  margin:1em;
+}

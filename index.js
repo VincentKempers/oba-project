@@ -2,12 +2,21 @@ var sparqlquery = `
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
     SELECT ?cho ?title ?img WHERE {
-      ?cho dc:type "Poster."^^xsd:string .
-      ?cho dc:subject "Music."^^xsd:string .
-      ?cho dc:title ?title .
-      ?cho foaf:depiction ?img .
-    }
-    LIMIT 300`;
+   {
+     ?cho dc:type "Poster."^^xsd:string .
+     ?cho dc:subject "Art."^^xsd:string .
+     ?cho dc:title ?title .
+     ?cho foaf:depiction ?img .
+   }
+   UNION
+   {
+     ?cho dc:type "Poster."^^xsd:string .
+     ?cho dc:subject "Music."^^xsd:string .
+     ?cho dc:title ?title .
+     ?cho foaf:depiction ?img .
+   }
+   }
+    LIMIT 500`;
     // more fun dc:types: 'affiche', 'japonstof', 'tegel', 'herenkostuum'
     // more fun dc:subjects with Poster.: 'Privacy.', 'Pop music.', 'Music.', 'Squatters movement.'
 
@@ -24,11 +33,17 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
     console.log(rows);
 
     for (i = 0; i < rows.length; ++i) {
-        
+        var sections = document.createElement('section');
         var img = document.createElement('img');
+        var p = document.createElement('p');
+
         img.src = rows[i]['img']['value'];
         img.title = rows[i]['title']['value'];
-        imgdiv.appendChild(img);
+        p.innerHTML = img.title;
+        
+        imgdiv.appendChild(sections);
+        sections.appendChild(img);
+        sections.appendChild(p);
     }
   })
   .catch(function(error) {
