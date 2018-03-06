@@ -15,7 +15,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
      ?cho sem:hasBeginTimeStamp ?date .
    }
    ORDER BY ?date
-    LIMIT 10`,
+    LIMIT 100`,
     init:  function() {
        app.encodedquery = encodeURI(this.sparqlquery);
        app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
@@ -38,7 +38,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
     for (let i = 0; i < rows.length; ++i) {
 
-        var sections = document.createElement('section');
+        var sections = document.createElement('div');
         var linkAround = document.createElement('a');
         var img = document.createElement('img');
         var p = document.createElement('p');
@@ -79,6 +79,9 @@ let content = (function() {
    },
    router: function(){
      routie({
+      'images': function(){
+        content.toggle(window.location.hash);
+      },
       'detail/*': function(detail) {
         renderPage.detailHtml(detail);
       }
@@ -92,11 +95,16 @@ var renderPage = {
   detailHtml: function(detail) {
     var html = `<div>`;
     content.collection.forEach(function(d){
-      if (detail == d.title ) {
+      console.log(d);
+      if (detail == d.title) {
         html += `
         <h1>${d.title}</h1>
         <p>${d.date}</p>
         <img src="${d.image}" title="${d.title}">
+        <p>Lorem ipsum dolor sit amet, in amet omnesque pri, vis adhuc imperdiet ei. Te sit nobis nominati reprimique, vis verterem scribentur eu. Ad dicunt molestie partiendo has, an vocent splendide mea. Sapientem abhorreant ei eam. Nam dicta errem appetere in, euismod veritus mnesarchum his ei.
+        </p>
+        <iframe src="https://open.spotify.com/embed?uri=spotify:album:1DFixLWuPkv3KT3TnV35m3"
+        width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         `;
       } else {
         console.log('no');
@@ -108,5 +116,5 @@ var renderPage = {
 };
 
 app.init();
-content.router();
+content.router('#images');
 console.log(content.collection);
