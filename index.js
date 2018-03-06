@@ -1,48 +1,21 @@
-// var sparqlquery = `
-// PREFIX dc: <http://purl.org/dc/elements/1.1/>
-//     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-//     SELECT ?cho ?title ?img WHERE {
-//    {
-//      ?cho dc:type "Poster."^^xsd:string .
-//      ?cho dc:subject "Pop Music."^^xsd:string .
-//      ?cho dc:title ?title .
-//      ?cho foaf:depiction ?img .
-//    }
-//    UNION
-//    {
-//      ?cho dc:type "Poster."^^xsd:string .
-//      ?cho dc:subject "Music."^^xsd:string .
-//      ?cho dc:title ?title .
-//      ?cho foaf:depiction ?img .
-//    }
-//    }
-//     LIMIT 100`;
-//     // more fun dc:types: 'affiche', 'japonstof', 'tegel', 'herenkostuum'
-//     // more fun dc:subjects with Poster.: 'Privacy.', 'Pop music.', 'Music.', 'Squatters movement.'
-
-  // var encodedquery = encodeURI(sparqlquery);
 
 'use strict';
+
+
   let app = {
   sparqlquery: `
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
     PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-    SELECT ?cho ?title ?img WHERE {
-   {
-     ?cho dc:type "Poster."^^xsd:string .
-     ?cho dc:subject "Pop Music."^^xsd:string .
-     ?cho dc:title ?title .
-     ?cho foaf:depiction ?img .
-   }
-   UNION
-   {
+    PREFIX sem: <http://semanticweb.cs.vu.nl/2009/11/sem/>
+    SELECT ?cho ?title ?img ?date WHERE {
      ?cho dc:type "Poster."^^xsd:string .
      ?cho dc:subject "Music."^^xsd:string .
      ?cho dc:title ?title .
      ?cho foaf:depiction ?img .
+     ?cho sem:hasBeginTimeStamp ?date .
    }
-   }
-    LIMIT 30`,
+   ORDER BY ?date
+    LIMIT 10`,
     init:  function() {
        app.encodedquery = encodeURI(this.sparqlquery);
        app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
@@ -53,7 +26,15 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
     
     var rows = data.results.bindings; // get the results
     var imgdiv = document.getElementById('images');
-    console.log(rows);
+
+    content.collection = rows.map(function (d) {
+      return {
+        image: d.img.value,
+        title: d.title.value,
+        slug: d.title.value.replace(/\s+/g, '-').toLowerCase(),
+        date: d.date.value
+      };
+    });
 
     for (let i = 0; i < rows.length; ++i) {
 
@@ -74,9 +55,8 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
     }
   }).catch(function(error) {
     console.log(error);
-    })
-  },
-  
+    });
+  }
 };
 
 let content = (function() {
@@ -99,20 +79,34 @@ let content = (function() {
    },
    router: function(){
      routie({
-      'detail': function() {
-        content.toggle(window.location.hash);
-       },
       'detail/*': function(detail) {
-        console.log(typeof detail);
-
-        detail = detail.replace(/\s+/g, '-').toLowerCase();
-        console.log(detail);
-        // content.toggle(window.location.hash);
+        renderPage.detailHtml(detail);
       }
     });
-   }
+   },
+   collection: collection
   }
 })();
 
+var renderPage = {
+  detailHtml: function(detail) {
+    var html = `<div>`;
+    content.collection.forEach(function(d){
+      if (detail == d.title ) {
+        html += `
+        <h1>${d.title}</h1>
+        <p>${d.date}</p>
+        <img src="${d.image}" title="${d.title}">
+        `;
+      } else {
+        console.log('no');
+      }
+      html += `</div>`;
+      document.getElementById("detail").innerHTML = html;
+    });
+  }
+};
+
 app.init();
-content.router('images');
+content.router();
+console.log(content.collection);
