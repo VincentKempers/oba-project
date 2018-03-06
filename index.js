@@ -42,7 +42,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
      ?cho foaf:depiction ?img .
    }
    }
-    LIMIT 100`,
+    LIMIT 30`,
     init:  function() {
        app.encodedquery = encodeURI(this.sparqlquery);
        app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
@@ -64,7 +64,7 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
         img.src = rows[i]['img']['value'];
         img.title = rows[i]['title']['value'];
-        linkAround.href = rows[i]['title']['value'];
+        linkAround.href = "#detail/" + rows[i]['title']['value'];
         p.innerHTML = img.title;
 
         imgdiv.appendChild(sections);
@@ -73,11 +73,46 @@ PREFIX dc: <http://purl.org/dc/elements/1.1/>
         linkAround.appendChild(p);
     }
   }).catch(function(error) {
-    // if there is any error you will catch them here
     console.log(error);
     })
   },
   
 };
 
+let content = (function() {
+
+  function hideElements(selector) {
+    document.querySelectorAll(selector).forEach(function(element) {
+      element.classList.add('hidden');
+    });
+  }
+  function showElement(selector) {
+      document.querySelector(selector).classList.remove('hidden');
+  };
+
+  var collection = {};
+
+  return {
+   toggle: function(id) {
+     hideElements('section');
+     showElement(id);
+   },
+   router: function(){
+     routie({
+      'detail': function() {
+        content.toggle(window.location.hash);
+       },
+      'detail/*': function(detail) {
+        console.log(typeof detail);
+
+        detail = detail.replace(/\s+/g, '-').toLowerCase();
+        console.log(detail);
+        // content.toggle(window.location.hash);
+      }
+    });
+   }
+  }
+})();
+
 app.init();
+content.router('images');

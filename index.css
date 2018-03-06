@@ -9,5 +9,9 @@ body {
 }
 
 section {
-  margin:1em;
+  margin: 1em;
+}
+
+.hidden {
+  visibility: hidden;
 }
