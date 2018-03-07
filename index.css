@@ -1,3 +1,7 @@
+.hidden {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background-color: rgba(247, 236, 195, 1.000);
@@ -16,10 +20,5 @@ section {
   margin: 1em;
 }
 
-#detail {
-  position: fixed;
-}
 
-.hidden {
-  visibility: hidden;
-}
+
