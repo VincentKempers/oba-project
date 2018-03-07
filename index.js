@@ -27,13 +27,14 @@ sparqlquery: `
     
       var rows = data.results.bindings; // get the results
       var imgdiv = document.getElementById('images');
-      console.log(rows);
 
       content.collection = rows.map(function (d) {
-        console.log(d);
-        if (d.title.value == "[Poster.]") {
-          d.title.value = 'onbekend';
-        }
+        var theDate = d.date.value;
+        var start = theDate.indexOf('');
+        var end = theDate.indexOf('?');
+        theDate = theDate.substring(start, end);
+
+
         return {
           image: d.img.value,
           title: d.title.value,
@@ -105,7 +106,7 @@ var renderPage = {
       document.getElementById("allimages").innerHTML = html;
     });
   }, 
-  detailTekst: function(detail){
+  detailTekst: function(detail) {
     var html = `
       <div class="explain">
           <p>Lorem ipsum dolor sit amet, in amet omnesque pri, vis adhuc imperdiet ei. Te sit nobis nominati reprimique, vis verterem scribentur eu. Ad dicunt molestie partiendo has, an vocent splendide mea. Sapientem abhorreant ei eam. Nam dicta errem appetere in, euismod veritus mnesarchum his ei.
@@ -114,8 +115,8 @@ var renderPage = {
           width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     `;
-    var detailEl = document.getElementById("detail");
-    detailEl.insertAdjacentHTML('beforeend', html);
+    var detailEl = document.getElementById("spotify");
+    detailEl.innerHTML = html;
   }
 };
 app.init();

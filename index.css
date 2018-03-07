@@ -2,15 +2,11 @@
   display: none !important;
 }
 
-.explain {
-
-}
-
 body {
   background-color: silver;
   background-image: linear-gradient(335deg, #b00 23px, transparent 23px), 
   linear-gradient(155deg, rgba(180, 2, 0, 1.000) 23px, transparent 23px),
-  linear-gradient(335deg, #b00 23px, transparent 23px), 
+  linear-gradient(335deg, rgba(150, 2, 0, 1.000) 23px, transparent 23px), 
   linear-gradient(155deg, rgba(180, 2, 0, 1.000) 23px, transparent 23px);
   background-size: 58px 58px; 
   background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
@@ -51,6 +47,10 @@ p {
   font-weight: bolder;
   padding: 2em;
   max-width: 40em;
+}
+
+h3 {
+  background-color:white;
 }
 
 
