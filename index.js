@@ -3,7 +3,7 @@
 
 
 let app = {
-  limit: 20,
+  limit: 100,
   offset: 0,
 sparqlquery: `
    PREFIX dc: <http://purl.org/dc/elements/1.1/>
@@ -17,23 +17,30 @@ sparqlquery: `
     ?cho foaf:depiction ?img .
     ?cho sem:hasBeginTimeStamp ?date .
   FILTER (?title != "[Poster.]"^^xsd:string)
+  FILTER (?title != "Paradiso Talentenshow."^^xsd:string)
+  FILTER (?title != "Talentenshow."^^xsd:string)
+  FILTER (?title != "Talentengala."^^xsd:string)
+  FILTER (?title != "Paradiso talentenshow."^^xsd:string)
+  FILTER (?title != "Talentenshow Paradiso."^^xsd:string)
+  FILTER (?title != "Paradiso Talenten Gala."^^xsd:string)
+  FILTER (?title != "Paradiso TalentenGala."^^xsd:string)
+  FILTER (?title != "Talenten Gala!"^^xsd:string)
+  FILTER (?title != "Paradiso Talentenshow Gala."^^xsd:string)
   }
   ORDER BY ?date
   LIMIT 1000`,
     init:  function() {
       var sparqlquery = this.sparqlquery;
+
       app.encodedquery = encodeURIComponent(sparqlquery);
-      app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' 
-      + this.encodedquery + 
-      '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
-      
+      app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
+ 
       fetch(this.queryurl)
       .then((resp) => resp.json()) // transform the data into json
       .then(function(data) {
     
       var rows = data.results.bindings; // get the results
-      var imgdiv = document.getElementById('images');
-
+      
       content.collection = rows.map(function (d) {
         var theDate = d.date.value;
         var start = theDate.indexOf('');
@@ -41,47 +48,14 @@ sparqlquery: `
         theDate = theDate.substring(start, end);
 
         return {
-          date: d.date.value.replace(/[?-]/g, ' '),
-          items: {
           image: d.img.value,
           title: d.title.value,
           slug: d.title.value.replace(/[\s+.]/g, '-').toLowerCase(),
           date: d.date.value.replace(/[?-]/g, ' '),
-          desc: d.desc.value.replace(/[?-]/g, ' ')}
+          desc: d.desc.value.replace(/[?-]/g, ' ')
         };
       });
-
-      console.log(content.collection)
-
-      // var shuffledContent = shuffle(content.collection);
-      // function shuffle(sourceArray) {
-      //   for (var i = 0; i < sourceArray.length - 1; i++) {
-      //     var j = i + Math.floor(Math.random() * (sourceArray.length - i));
-
-      //     var temp = sourceArray[j];
-      //     sourceArray[j] = sourceArray[i];
-      //     sourceArray[i] = temp;
-      //   }
-      //   return sourceArray;
-      // }
-
-      content.collection.forEach(function(d){
-          var sections = document.createElement('div');
-          var linkAround = document.createElement('a');
-          var img = document.createElement('img');
-          var p = document.createElement('p');
-
-          img.src = d.items.image;
-          img.title = d.items.title;
-          linkAround.href = "#detail/" + d.items.slug;
-          p.innerHTML = d.items.title;
-
-
-          imgdiv.appendChild(sections);
-          sections.appendChild(linkAround)
-          linkAround.appendChild(img);
-          linkAround.appendChild(p);
-      });
+      renderPage.searchPage();
     })
       .catch(function(error) {
         console.log(error);
@@ -96,10 +70,6 @@ let content = (function() {
   return {
    router: function(){
      routie({
-      'years': function(){
-        document.getElementById('images').classList.remove('hidden');
-        document.getElementById('detail').classList.add('hidden');
-      },
       'images': function(){
         document.getElementById('images').classList.remove('hidden');
         document.getElementById('detail').classList.add('hidden');
@@ -117,19 +87,40 @@ let content = (function() {
 })();
 
 var renderPage = {
+  searchPage: function() {
+    var imgdiv = document.getElementById('posters');
+    var sections = document.createElement('ul');
+    sections.id = "myUL";
+    imgdiv.appendChild(sections);
+        content.collection.forEach(function(d){
+          var listItem = document.createElement('li');
+          var linkDetail = document.createElement('a');
+          var img = document.createElement('img');
+          
+          img.src = d.image;
+          img.title = d.title;
+          linkDetail.href = "#detail/" + d.slug;
+          linkDetail.innerHTML = d.title;
+
+          
+          sections.appendChild(listItem);
+          listItem.appendChild(linkDetail);
+          linkDetail.appendChild(img);
+      });
+  },
   detailIMG: function(detail) {
     var html = `<a href="#images"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
           <path d="M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z"/>
           <path d="M0 0h48v48H0z" fill="none"/>
         </svg></a>`;
     content.collection.forEach(function(d) {
-      if (d.items.slug === detail && detail !== "undefined") {
+      if (d.slug === detail && detail !== "undefined") {
         html += `
         <article>
-          <h3>${d.items.title}</h3>
-          <img src="${d.items.image}" title="${d.items.title}">
-          <p>Evenement werd gehouden rond: ${d.items.date}</p>
-          <p>${d.items.desc}</p>
+          <h3>${d.title}</h3>
+          <img src="${d.image}" title="${d.title}">
+          <p>Evenement werd gehouden rond: ${d.date}</p>
+          <p>${d.desc}</p>
         </article>`;
       }
       document.getElementById("allimages").innerHTML = html;
@@ -139,7 +130,7 @@ var renderPage = {
     var html;
     html += `
       <div class="explain">
-          <iframe src="https://open.spotify.com/embed?uri=spotify:album:6LtrEATr18sclojAIJ47Bh"
+          <iframe src="https://open.spotify.com/embed?uri=spotify:album:10yei2eL0tlBVJokSZ4s5p"
           width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     `;
@@ -148,7 +139,22 @@ var renderPage = {
   }
 };
 
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 
 app.init();
 content.router('images');
-console.log(content.collection)
+console.log(content.collection.title)

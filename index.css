@@ -17,13 +17,18 @@ body {
   font-size: 1em;
 }
 
-#images {
+#posters ul {
   display: flex;
   flex-direction: row;
 }
 
-#images > div{
+#posters ul > li{
   margin-right: 2em;
+}
+
+#posters ul li > a {
+  color: white;
+  font-family: sans-serif;
 }
 
 #detail {
@@ -31,6 +36,13 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+p, a {
+  color: white;
+  font-weight: bolder;
+  max-width: 30em;
+  text-shadow: 2px black;
 }
 
 section {
@@ -53,12 +65,10 @@ main {
   min-width: 100vw;
 }
 
-p {
-  color: white;
-  font-weight: bolder;
-  max-width: 30em;
-  text-shadow: 2px black;
+ul {
+  list-style: none;
 }
+
 
 h3 {
   color:white;
