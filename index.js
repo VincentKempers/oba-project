@@ -18,16 +18,15 @@ sparqlquery: `
     ?cho sem:hasBeginTimeStamp ?date .
   FILTER (?title != "[Poster.]"^^xsd:string)
   }
-  ORDER BY ?date`,
+  ORDER BY ?date
+  LIMIT 1000`,
     init:  function() {
-      var sparqlquery = this.sparqlquery + 
-        ` LIMIT ` + this.limit + " " +
-        `OFFSET ` + (this.offset += this.limit)
-      ;
-
+      var sparqlquery = this.sparqlquery;
       app.encodedquery = encodeURIComponent(sparqlquery);
-      app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
- 
+      app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' 
+      + this.encodedquery + 
+      '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
+      
       fetch(this.queryurl)
       .then((resp) => resp.json()) // transform the data into json
       .then(function(data) {
@@ -42,35 +41,40 @@ sparqlquery: `
         theDate = theDate.substring(start, end);
 
         return {
+          date: d.date.value.replace(/[?-]/g, ' '),
+          items: {
           image: d.img.value,
           title: d.title.value,
           slug: d.title.value.replace(/[\s+.]/g, '-').toLowerCase(),
           date: d.date.value.replace(/[?-]/g, ' '),
-          desc: d.desc.value.replace(/[?-]/g, ' ')
+          desc: d.desc.value.replace(/[?-]/g, ' ')}
         };
       });
 
-      var shuffledContent = shuffle(content.collection);
-      function shuffle(sourceArray) {
-        for (var i = 0; i < sourceArray.length - 1; i++) {
-          var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+      console.log(content.collection)
 
-          var temp = sourceArray[j];
-          sourceArray[j] = sourceArray[i];
-          sourceArray[i] = temp;
-        }
-        return sourceArray;
-      }
-      shuffledContent.forEach(function(d){
+      // var shuffledContent = shuffle(content.collection);
+      // function shuffle(sourceArray) {
+      //   for (var i = 0; i < sourceArray.length - 1; i++) {
+      //     var j = i + Math.floor(Math.random() * (sourceArray.length - i));
+
+      //     var temp = sourceArray[j];
+      //     sourceArray[j] = sourceArray[i];
+      //     sourceArray[i] = temp;
+      //   }
+      //   return sourceArray;
+      // }
+
+      content.collection.forEach(function(d){
           var sections = document.createElement('div');
           var linkAround = document.createElement('a');
           var img = document.createElement('img');
           var p = document.createElement('p');
 
-          img.src = d.image;
-          img.title = d.title;
-          linkAround.href = "#detail/" + d.slug;
-          p.innerHTML = d.title;
+          img.src = d.items.image;
+          img.title = d.items.title;
+          linkAround.href = "#detail/" + d.items.slug;
+          p.innerHTML = d.items.title;
 
 
           imgdiv.appendChild(sections);
@@ -92,6 +96,10 @@ let content = (function() {
   return {
    router: function(){
      routie({
+      'years': function(){
+        document.getElementById('images').classList.remove('hidden');
+        document.getElementById('detail').classList.add('hidden');
+      },
       'images': function(){
         document.getElementById('images').classList.remove('hidden');
         document.getElementById('detail').classList.add('hidden');
@@ -115,13 +123,13 @@ var renderPage = {
           <path d="M0 0h48v48H0z" fill="none"/>
         </svg></a>`;
     content.collection.forEach(function(d) {
-      if (d.slug === detail && detail !== "undefined") {
+      if (d.items.slug === detail && detail !== "undefined") {
         html += `
         <article>
-          <h3>${d.title}</h3>
-          <img src="${d.image}" title="${d.title}">
-          <p>Evenement werd gehouden rond: ${d.date}</p>
-          <p>${d.desc}</p>
+          <h3>${d.items.title}</h3>
+          <img src="${d.items.image}" title="${d.items.title}">
+          <p>Evenement werd gehouden rond: ${d.items.date}</p>
+          <p>${d.items.desc}</p>
         </article>`;
       }
       document.getElementById("allimages").innerHTML = html;
@@ -140,11 +148,6 @@ var renderPage = {
   }
 };
 
-var jorikButton = document.getElementById('jorik');
-
-jorikButton.addEventListener('click', function() {
-    app.init();
-},true);
 
 app.init();
 content.router('images');
