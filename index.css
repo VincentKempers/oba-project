@@ -37,20 +37,31 @@ section {
   margin: 1em;
 }
 
+#allimages {
+  margin-right: 2em;
+}
+
+#allimages svg {
+  fill: white;
+}
+
 main { 
-  background-color: rgba(0,0,0,.2);
+  background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
+  margin: -10px;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 p {
-  background-color: white;
+  color: white;
   font-weight: bolder;
-  padding: 2em;
-  max-width: 40em;
+  max-width: 30em;
+  text-shadow: 2px black;
 }
 
 h3 {
-  background-color:white;
+  color:white;
 }
 
 
