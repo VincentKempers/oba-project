@@ -68,10 +68,6 @@ var data = [
     "embed": "spotify:album:0YaEQO8yfc9NHEDiZu8ssX"
   },
   {
-    "title":"Ramones.",
-    "embed": "spotify:album:0YaEQO8yfc9NHEDiZu8ssX"
-  },
-  {
     "title":"Ultra's.",
     "embed": "spotify:album:3bBAAh56UpqMmwuq9j4ZcN"
   },
@@ -86,10 +82,6 @@ var data = [
   {
     "title":"Ziggy Marley & Melody Makers.",
     "embed": "spotify:album:5qPo9GTYNkMFfe40oUL7VZ"
-  },
-  {
-    "title":"10 jaar Ivy Green.",
-    "embed": "spotify:album:4PDP7EKx9YiZcrNcmNAis6"
   },
   {
     "title":"Solomon Burke.",
@@ -108,24 +100,8 @@ var data = [
     "embed":"spotify:album:5Tt3XfakaB1M1VbpubCBR1"
   },
   {
-    "title":"Green on Red.",
-    "embed": "spotify:album:3beOzSOb3URSWWiWBis707"
-  },
-  {
     "title":"Disco party met Prince Charles.",
     "embed":"spotify:album:1upoyWoLrf9FdG7VWB0akK"
-  },
-  {
-    "title":"Ziggy Marley & Melody Makers.",
-    "embed": "spotify:album:5qPo9GTYNkMFfe40oUL7VZ"
-  },
-  {
-    "title":"Made in Holland.",
-    "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
-  },
-  {
-    "title":"Made in Holland.",
-    "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
   },
   {
     "title":"Made in Holland.",

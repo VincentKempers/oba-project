@@ -128,7 +128,6 @@ var renderPage = {
   detailTekst: function(detail) {
     var html;
     data.forEach(function(d){
-      console.log(d.title.replace(/[\s+.]/g, '-').toLowerCase());
       if (d.title.replace(/[\s+.]/g, '-').toLowerCase() === detail) {
       html += `
       <div class="explain">
