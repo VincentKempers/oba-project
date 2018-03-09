@@ -1,7 +1,6 @@
 
 'use strict';
 
-
 let app = {
   limit: 100,
   offset: 0,
@@ -128,29 +127,36 @@ var renderPage = {
   },
   detailTekst: function(detail) {
     var html;
-    html += `
+    data.forEach(function(d){
+      console.log(d.title.replace(/[\s+.]/g, '-').toLowerCase());
+      if (d.title.replace(/[\s+.]/g, '-').toLowerCase() === detail) {
+      html += `
       <div class="explain">
-          <iframe src="https://open.spotify.com/embed?uri=spotify:album:10yei2eL0tlBVJokSZ4s5p"
+          <iframe src="https://open.spotify.com/embed?uri=${d.embed}"
           width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     `;
-    var detailEl = document.getElementById("spotify");
+      } else {
+        console.log('error')
+      }
+    });
+    var detailEl = document.getElementById('spotify');
     detailEl.innerHTML = html;
   }
 };
 
 function myFunction() {
     var input, filter, ul, li, a, i;
-    input = document.getElementById("myInput");
+    input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
+            li[i].classList.remove('hidden');
         } else {
-            li[i].style.display = "none";
+            li[i].classList.add('hidden');;
         }
     }
 }

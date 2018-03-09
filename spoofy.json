@@ -1,194 +1,124 @@
-"10 jaar Ivy Green.": {
+var data = {
+  "10 jaar Ivy Green.": {
   "embed": "spotify:album:4PDP7EKx9YiZcrNcmNAis6"
-}
- Green on Red.
- Herman Brood & his Wild Romance.
- Chris Rea.
- SO!
- Barrence Whitfield and the Savages.
- Made in Holland.
- Anne Clark + Band
- Pep Club.
- Steel Pulse.
- Lenny Kravitz.
- Lydia Lunch.
- Siobhan.
- Made in Holland.
- Red Hot Chili Peppers.
+},
+"Green on Red.": {
+  "embed": "spotify:album:3beOzSOb3URSWWiWBis707"
+ },
+ "Herman Brood & his Wild Romance.": {
+   "embed":"spotify:album:0iLppOEBKBgPfAOGBbTF9Q"
+ },
+ "Chris Rea.": {
+  "embed": "spotify:album:0rUMR4B7I2718LhLR3z0qj"
+ },
+ "SO!": {
+  "embed": "spotify:user:1230268882:playlist:0FvQb8WRmhT0S8fJXhbKHU"
+ },
+ "Barrence Whitfield and the Savages.":{
+  "embed": "spotify:album:7BkGkTLvqQra0FWN3YtLF0"
+ },
+ "Made in Holland.": {
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+ "Anne Clark + Band": {
+  "embed" : "spotify:album:15eoAwjHark9zAPE5z2GKJ"
+ },
+ "Pep Club." : {
+  "embed" : "spotify:album:10yei2eL0tlBVJokSZ4s5p"
+ },
+ "Steel Pulse.": {
+  "embed": "spotify:album:3BVtphNjEG5djS7JKPhn7T"
+ },
+ "Lenny Kravitz.": {
+  "embed": "spotify:album:70Vuh3jYUMO8LLP5BaqZMb"
+ },
+ "Lydia Lunch.":{
+  "embed":"spotify:album:2rDp5iFby86SSjNtpm3TjN"
+ },
+ "Siobhan.": {
+  "embed":"spotify:album:6OrKDX3ok7cwA9OGpgOQzO"
+ },
+ "Made in Holland.": {
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+ "Red Hot Chili Peppers.":{
+  "embed": "spotify:album:1oOkcBu5bgkUzZTvKD1m8z"
+ },
  "Ivy Green.": {
   "embed": "spotify:album:4PDP7EKx9YiZcrNcmNAis6"
 },
-  Boogie Down Productions.
- New Model Army.
- Poster / In Paradiso.
- Luka Bloom.
- John Cale.
- Billy Cobham & Band.
- Billy Cobham's Glass Menagerie.
- True north on tour.
- Wim Mertens Ensemble.
- Crowded House.
- Liefs uit Leiden.
- Slagwerk Concert.
+  "Boogie Down Productions.":{
+    "embed":"spotify:album:4Vy8Ddvc1tlQV3sYs7nWuD"
+  },
  "Pep Club." : {
   "embed" : "spotify:album:10yei2eL0tlBVJokSZ4s5p"
- }
- Ramones.
- The Wooden Tops.
- Pretty Things terug!!!
- X-mas Jam.
- Ramones.
- Kuifje in excelsis.
- Jimmy Cliff.
- Johnny Guitar Watson.
- Finders Keepers Losers Weepers.
- Dissidenten.
- Swans.
- Cherished Memories.
- Claw Boys Claw.
- Ultra's.
- Herman Brood and his Wild Romance.
- Pepclub.
- Alarm!
- Made in Holland.
- Ziggy Marley & Melody Makers.
- Timbuk 3.
- Alarm!
- MAM.
- I've Got The Bullets.
- Talentengala.
- Tröckener Kecks.
- Martha Reeves and the Vandellas.
- Hüsker Du.
- Gail Ann Dorsey.
- Stan Ridgeway & Chapter Eleven.
- Finale open jaarlijkse Gitaar kampioenschappen.
- PIL.
+ },
+ "Ramones.": {
+  "embed": "spotify:album:0YaEQO8yfc9NHEDiZu8ssX"
+ },
+  "Ramones.": {
+  "embed": "spotify:album:0YaEQO8yfc9NHEDiZu8ssX"
+ },
+ "Ultra's.": {
+  "embed": "spotify:album:3bBAAh56UpqMmwuq9j4ZcN"
+ },
+ "PepClub." : {
+  "embed" : "spotify:album:10yei2eL0tlBVJokSZ4s5p"
+ },
+
+ "Made in Holland.": {
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+ "Ziggy Marley & Melody Makers.": {
+  "embed": "spotify:album:5qPo9GTYNkMFfe40oUL7VZ"
+ },
  "10 jaar Ivy Green.": {
   "embed": "spotify:album:4PDP7EKx9YiZcrNcmNAis6"
+},
+ "Solomon Burke.":{
+  "embed": "spotify:album:1PcxRhtVoFMXAkojPK1GWN"
+ },
+  "Snowy White.":{
+  "embed":"spotify:album:6LshkqHsxlW480jyAleAD4"
+ },
+ "Boogie Down Productions.":{
+    "embed":"spotify:album:4Vy8Ddvc1tlQV3sYs7nWuD"
+  },
+ "Love/Hate.":{
+  "embed": "spotify:album:7ySvIgQt4DmewXYtuR8EYk"
+ },
+ "Boogie Down Productions.":{
+    "embed":"spotify:album:4Vy8Ddvc1tlQV3sYs7nWuD"
+  },
+ "Mark Stewart & The Maffia.": {
+  "embed":"spotify:album:5Tt3XfakaB1M1VbpubCBR1"
+ },
+ "Green on Red.": {
+  "embed": "spotify:album:3beOzSOb3URSWWiWBis707"
+ },
+ "Disco party met Prince Charles.":{
+  "embed":"spotify:album:1upoyWoLrf9FdG7VWB0akK"
+ },
+ "Ziggy Marley & Melody Makers.":{
+  "embed": "spotify:album:5qPo9GTYNkMFfe40oUL7VZ"
+ },
+ "Made in Holland." :{
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+ "Made in Holland." :{
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+ "Made in Holland." :{
+  "embed": "spotify:album:2T0MfqCHRB885nf92CKemA"
+ },
+
+ "Festival for Jimi Hendrix." :{
+  "embed": "spotify:user:spotify:playlist:37i9dQZF1DWTNV753no4ic"
+ },
+
+ "Snowy White.":{
+  "embed":"spotify:album:6LshkqHsxlW480jyAleAD4"
+ },
+ "John Lennon herdenkingsdag." :{
+  "embed": "spotify:user:spotify:playlist:37i9dQZF1DX3WXnClxyI5d" 
 }
- Toy Dolls.
- Radio X presenteert.
- Slickaphonics.
- Anne Clark.
- Black Uhuru.
- Tegentonen.
- Edie Brickell.
- Loudon Wainwright III.
- Neel, Modern English.
- In Tua Nua.
- Astral Bodies.
- Solomon Burke.
- Snowy White.
- Boogie Down Productions.
- Love/Hate.
- Boogie Down Productions.
- The Blues met het puikje van de aanstormende nieuwe lichting.
- King Kurt.
- Desmond Dekker.
- Candy Dulfer's Funky Stuff.
- Steunavond Goede Voornemens.
- SPK.
- Mark Stewart & The Maffia.
- Green on Red.
- Psychic TV.
- Disco party met Prince Charles.
- UK Subs.
- Paul Weller.
- Plastic Dolls.
- Throwing Muses.
- Paradiso Talenten Gala.
- Dinosaur JR.
- Toots & The Maytals.
- New Order.
- Popmusici spelen Buddy Holly.
- Crime and the City Solution.
- Screaming Blue Messiahs.
- Shriek Back.
- Bad Meaning Good.
- Butthole Surfers.
- Talentengala.
- Ijahman Levi.
- Glenn Branca.
- Lime Spiders.
- Blue Murder.
- Antigroup.
- Beat Battle.
- INXS.
- Soul Asylum.
- Suicide.
- Claw Boys Claw.
- Ziggy Marley & Melody Makers.
- Death.
- Sugar Cubes.
- Oranjebal.
- Ted Hawkins.
- Eddy Grant.
- Arno.
- Ten Years After.
- Muziek Opsessie.
- Benefietconcert steunpunt Zetten.
- Spear of Destiny.
- Frank Tovey.
- That Petrol Emotion.
- Black.
- Made in Holland.
- Sophia George.
- Giant.
- Fatal Flowers.
- Icehouse.
- Doug MacLeod.
- Bo Diddley.
- Link wray.
- Dr. John solo.
- Mink DeVille.
- Talenten Gala!
- Kool Moe Dee.
- Saturday Flash Fever.
- Fischer Z.
- Happy Mondays.
- Sugar Minott.
- Andy Pratt Solo.
- Midnight Oil.
- Made in Holland.
- Nina Hagen.
- Arno.
- Fatal Flowers.
- Paradiso TalentenGala.
- Made in Holland.
- Femi Kuti.
- Mustaphas 3.
- Mothers Finest.
- Toga Party.
- Nomads.
- Screamin' Jay Hawkins.
- One Two.
- Fad Gadget.
- Tegentonen.
- Alarm!
- Introducing The Fuzztones.
- Pixies.
- Distant Cousins.
- Nico and The Faction.
- Defunkt.
- Jeffrey Lee Pierce Quartet.
- Who's no 1 :
- Virgin promo dance night.
- Pepclub.
- Mental as Anything.
- Mink DeVille.
- Groot concert in Fantasio.
- Festival for Jimi Hendrix.
- Nachtconcert 24-7 Spyz.
- Just Ice.
- beat nigs.
- Big Country.
- Snowy White.
- Tröckener Kecks.
- Paradiso Publieksservice.
- Sir Douglas Quintet.
- John Lennon herdenkingsdag.
- Mutabaruka.
- Black.
- Fatal Flowers.
- Fairground Attraction.

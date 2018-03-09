@@ -20,14 +20,33 @@ body {
 #posters ul {
   display: flex;
   flex-direction: row;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 
-#posters ul > li{
+#posters ul > li {
   margin-right: 2em;
+}
+#posters ul:hover > li {
+  filter: brightness(0.4);
+}
+
+#posters ul > li:hover {
+  color: white;
+ filter: brightness(1);
+  font-family: sans-serif;
 }
 
 #posters ul li > a {
   color: white;
+  font-family: sans-serif;
+}
+
+#posters ul li > a:hover {
+  color: white;
+  opacity: 1;
   font-family: sans-serif;
 }
 
@@ -43,6 +62,7 @@ p, a {
   font-weight: bolder;
   max-width: 30em;
   text-shadow: 2px black;
+  text-decoration: none;
 }
 
 section {
@@ -50,6 +70,8 @@ section {
 }
 
 #allimages {
+  display: flex;
+  flex-direction: row;
   margin-right: 2em;
 }
 
@@ -73,6 +95,13 @@ ul {
 h3 {
   color:white;
 }
-
-
-
+input {
+    padding: 2em;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    width: 50vw;
+    height: 2em;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid black;
+}
