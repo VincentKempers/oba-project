@@ -46,7 +46,6 @@ sparqlquery: `
         // var start = theDate.indexOf('');
         // var end = theDate.indexOf('?');
         // theDate = theDate.substring(start, end);
-        console.log(theDate);
 
         return {
           image: d.img.value,
@@ -94,19 +93,27 @@ var renderPage = {
     sections.id = "myUL";
     imgdiv.appendChild(sections);
         content.collection.forEach(function(d){
+          var theDate = d.date;
+          var start = theDate.indexOf(' ') || theDate.indexOf('C') ;
+          var end = theDate.indexOf('?') || theDate.indexOf('1');
+          theDate = theDate.substring(start, end);
+          // console.log(theDate);
+
           var listItem = document.createElement('li');
           var linkDetail = document.createElement('a');
+          var tekst = document.createElement('p');
           var img = document.createElement('img');
 
           img.src = d.image;
           img.title = d.title;
           linkDetail.href = "#detail/" + d.slug;
-          // linkDetail.innerHTML = d.title;
+          tekst.innerHTML = theDate;
 
 
           sections.appendChild(listItem);
           listItem.appendChild(linkDetail);
           linkDetail.appendChild(img);
+          linkDetail.appendChild(tekst);
       });
   },
   detailIMG: function(detail) {
@@ -138,7 +145,7 @@ var renderPage = {
       </div>
     `;
       } else {
-        console.log('error')
+        console.log('error');
       }
     });
     var detailEl = document.getElementById('spotify');
@@ -164,4 +171,3 @@ function myFunction() {
 
 app.init();
 content.router('images');
-console.log(content.collection.title)

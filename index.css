@@ -12,22 +12,44 @@ p,a,h1,h2,h3,h4 {
   color: white;
 }
 
+#posters ul > li {
+  margin-right: 2em;
+  filter: brightness(0.4);
+}
+
+#posters ul:hover > li {
+  filter: brightness(0.4);
+}
+
+#posters ul > li:hover {
+  color: white;
+  filter: brightness(1);
+  font-family: sans-serif;
+}
+
 #myUL {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
   padding: 4em;
+  list-style: none;
 }
 
 #myUL > li {
   margin-right: 5em;
 }
 
-
 #myUL li:nth-child(odd) a > img {
-  transform: rotate(15deg);
+  transform: rotate(20deg);
 }
 
 #myUL li:nth-child(even) a > img {
-  transform: rotate(-15deg);
+  transform: rotate(-20deg);
+}
+
+a > p {
+  background-color: gold;
+  color: black;
+  padding: 1em;
+  width: 8em;
 }
