@@ -54,11 +54,6 @@ a > p {
   width: 8em;
 }
 
-/* h1 {
-  color: gold;
-  font-size: 14em;
-  margin: 0;
-} */
 
 #images {
   display: flex;
