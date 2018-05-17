@@ -3,95 +3,31 @@
 }
 
 body {
+  background-color: black;
   font-family: sans-serif;
   font-size: 1em;
 }
 
-#posters ul {
+p,a,h1,h2,h3,h4 {
+  color: white;
+}
+
+#myUL {
   display: flex;
   flex-direction: row;
-  max-width: 95vw;
-  max-height: 90vh;
-  overflow-y: hidden;
   overflow-x: scroll;
+  padding: 4em;
 }
 
-#posters ul > li {
-  margin-right: 2em;
-}
-#posters ul:hover > li {
-  filter: brightness(0.4);
-}
-
-#posters ul > li:hover {
-  color: white;
- filter: brightness(1);
-  font-family: sans-serif;
-}
-
-#posters ul li > a {
-  color: white;
-  font-family: sans-serif;
-}
-
-#posters ul li > a:hover {
-  color: white;
-  opacity: 1;
-  font-family: sans-serif;
-}
-
-#detail {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-p, a {
-  color: white;
-  font-weight: bolder;
-  max-width: 30em;
-  text-shadow: 2px black;
-  text-decoration: none;
-}
-
-section {
-  margin: 1em;
-}
-
-#allimages {
-  display: flex;
-  flex-direction: row;
-  margin-right: 2em;
-}
-
-#allimages svg {
-  fill: white;
-}
-
-main {
-  background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  margin: -10px;
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-ul {
-  list-style: none;
+#myUL > li {
+  margin-right: 5em;
 }
 
 
-h3 {
-  color:white;
+#myUL li:nth-child(odd) a > img {
+  transform: rotate(15deg);
 }
-input {
-    padding: 2em;
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    width: 50vw;
-    height: 2em;
-    display: block;
-    margin: 0 auto;
-    border: 2px solid black;
+
+#myUL li:nth-child(even) a > img {
+  transform: rotate(-15deg);
 }

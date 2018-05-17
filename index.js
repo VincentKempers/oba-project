@@ -33,18 +33,20 @@ sparqlquery: `
 
       app.encodedquery = encodeURIComponent(sparqlquery);
       app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
- 
+
       fetch(this.queryurl)
       .then((resp) => resp.json()) // transform the data into json
       .then(function(data) {
-    
+
       var rows = data.results.bindings; // get the results
-      
+
       content.collection = rows.map(function (d) {
+
         var theDate = d.date.value;
-        var start = theDate.indexOf('');
-        var end = theDate.indexOf('?');
-        theDate = theDate.substring(start, end);
+        // var start = theDate.indexOf('');
+        // var end = theDate.indexOf('?');
+        // theDate = theDate.substring(start, end);
+        console.log(theDate);
 
         return {
           image: d.img.value,
@@ -95,13 +97,13 @@ var renderPage = {
           var listItem = document.createElement('li');
           var linkDetail = document.createElement('a');
           var img = document.createElement('img');
-          
+
           img.src = d.image;
           img.title = d.title;
           linkDetail.href = "#detail/" + d.slug;
-          linkDetail.innerHTML = d.title;
+          // linkDetail.innerHTML = d.title;
 
-          
+
           sections.appendChild(listItem);
           listItem.appendChild(linkDetail);
           linkDetail.appendChild(img);
