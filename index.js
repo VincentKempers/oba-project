@@ -25,6 +25,7 @@ sparqlquery: `
   FILTER (?title != "Paradiso TalentenGala."^^xsd:string)
   FILTER (?title != "Talenten Gala!"^^xsd:string)
   FILTER (?title != "Paradiso Talentenshow Gala."^^xsd:string)
+  FILTER (?title != "Ultra's."^^xsd:string)
   }
   ORDER BY ?date
   LIMIT 1000`,
