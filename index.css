@@ -3,16 +3,6 @@
 }
 
 body {
-  background-color: silver;
-  background-image: linear-gradient(335deg, #b00 23px, transparent 23px), 
-  linear-gradient(155deg, rgba(180, 2, 0, 1.000) 23px, transparent 23px),
-  linear-gradient(335deg, rgba(150, 2, 0, 1.000) 23px, transparent 23px), 
-  linear-gradient(155deg, rgba(180, 2, 0, 1.000) 23px, transparent 23px);
-  background-size: 58px 58px; 
-  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
-}
-
-body { 
   font-family: sans-serif;
   font-size: 1em;
 }
@@ -79,7 +69,7 @@ section {
   fill: white;
 }
 
-main { 
+main {
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   margin: -10px;
