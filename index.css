@@ -53,3 +53,32 @@ a > p {
   padding: 1em;
   width: 8em;
 }
+
+/* h1 {
+  color: gold;
+  font-size: 14em;
+  margin: 0;
+} */
+
+#images {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: .5em;
+  width: 100%;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-bottom: .2em solid gold;
+  font-size: 4em;
+  color: white;
+  font-weight: bolder;
+  transition: 1s all ease-in;
+}
+
+input::placeholder {
+  color: gold;
+  font-weight: bolder;
+}
