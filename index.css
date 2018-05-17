@@ -54,7 +54,6 @@ a > p {
   width: 8em;
 }
 
-
 #images {
   display: flex;
   flex-direction: column;
@@ -76,4 +75,8 @@ input {
 input::placeholder {
   color: gold;
   font-weight: bolder;
+}
+
+svg {
+  fill: white;
 }
