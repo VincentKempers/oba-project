@@ -90,7 +90,9 @@ let content = (function() {
 var renderPage = {
   searchPage: function() {
     var imgdiv = document.getElementById('posters');
+    var theMain = document.getElementById('theMain');
     var sections = document.createElement('ul');
+    var year = document.createElement('h2');
     sections.id = "myUL";
     imgdiv.appendChild(sections);
         content.collection.forEach(function(d){
@@ -98,24 +100,30 @@ var renderPage = {
           var start = theDate.indexOf(' ') || theDate.indexOf('C') ;
           var end = theDate.indexOf('?') || theDate.indexOf('1');
           theDate = theDate.substring(start, end);
-          // console.log(theDate);
 
           var listItem = document.createElement('li');
           var linkDetail = document.createElement('a');
           var tekst = document.createElement('p');
           var img = document.createElement('img');
 
+
+
           img.src = d.image;
           img.title = d.title;
           linkDetail.href = "#detail/" + d.slug;
-          tekst.innerHTML = theDate + '-' + d.title;
+          tekst.innerHTML = theDate + ' ' + d.title;
 
+          listItem.addEventListener('mouseover', () => {
+            year.innerHTML = theDate;
+          });
 
           sections.appendChild(listItem);
           listItem.appendChild(linkDetail);
           linkDetail.appendChild(img);
           linkDetail.appendChild(tekst);
+
       });
+      theMain.appendChild(year);
   },
   detailIMG: function(detail) {
     var html = `<a href="#images"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
