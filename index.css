@@ -2,96 +2,114 @@
   display: none !important;
 }
 
+* {
+  margin: 0;
+}
+
 body {
+  box-sizing: border-box;
+  background-color: black;
   font-family: sans-serif;
   font-size: 1em;
 }
 
-#posters ul {
-  display: flex;
-  flex-direction: row;
-  max-width: 95vw;
-  max-height: 90vh;
-  overflow-y: hidden;
-  overflow-x: scroll;
+main {
+  min-width: 100vw;
 }
+
+p,a,h1,h2,h3,h4 {
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+  color:#ffd701;
+  font-weight: 800;
+}
+
 
 #posters ul > li {
   margin-right: 2em;
+  filter: brightness(0.4);
 }
+
 #posters ul:hover > li {
   filter: brightness(0.4);
 }
 
 #posters ul > li:hover {
   color: white;
- filter: brightness(1);
+  filter: brightness(1);
   font-family: sans-serif;
 }
 
-#posters ul li > a {
-  color: white;
-  font-family: sans-serif;
-}
-
-#posters ul li > a:hover {
-  color: white;
-  opacity: 1;
-  font-family: sans-serif;
-}
-
-#detail {
+#myUL {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
+  padding: 4em 0 4em 0;
+  list-style: none;
+}
+
+#myUL > li {
+  margin-right: 5em;
+}
+
+#myUL li:nth-child(odd) a > img {
+  transform: rotate(15deg);
+  width: 17em;
+}
+
+#myUL li:nth-child(even) a > img {
+  transform: rotate(-15deg);
+  width: 17em;
+}
+
+a{
+  text-decoration: none;
+}
+
+a > p {
+  background-color: gold;
+  color: black;
+  font-weight: 900;
+  padding: 1em;
+  margin-top: -20%;
+  position: relative;
+  width: 10em;
+  z-index: +1;
+}
+
+#allimages > article {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-p, a {
+#images {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: .3em;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-bottom: .2em solid gold;
+  font-size: 1.3em;
   color: white;
   font-weight: bolder;
-  max-width: 30em;
-  text-shadow: 2px black;
-  text-decoration: none;
+  transition: 1s all ease-in;
 }
 
-section {
-  margin: 1em;
+input::placeholder {
+  color: gold;
+  font-weight: bolder;
 }
 
-#allimages {
-  display: flex;
-  flex-direction: row;
-  margin-right: 2em;
-}
-
-#allimages svg {
+svg {
   fill: white;
-}
-
-main {
-  background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  margin: -10px;
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-ul {
-  list-style: none;
-}
-
-
-h3 {
-  color:white;
-}
-input {
-    padding: 2em;
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    width: 50vw;
-    height: 2em;
-    display: block;
-    margin: 0 auto;
-    border: 2px solid black;
 }

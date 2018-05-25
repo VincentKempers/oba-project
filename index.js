@@ -25,6 +25,7 @@ sparqlquery: `
   FILTER (?title != "Paradiso TalentenGala."^^xsd:string)
   FILTER (?title != "Talenten Gala!"^^xsd:string)
   FILTER (?title != "Paradiso Talentenshow Gala."^^xsd:string)
+  FILTER (?title != "Ultra's."^^xsd:string)
   }
   ORDER BY ?date
   LIMIT 1000`,
@@ -33,18 +34,19 @@ sparqlquery: `
 
       app.encodedquery = encodeURIComponent(sparqlquery);
       app.queryurl= 'https://api.data.adamlink.nl/datasets/AdamNet/all/services/endpoint/sparql?default-graph-uri=&query=' + this.encodedquery + '&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on';
- 
+
       fetch(this.queryurl)
       .then((resp) => resp.json()) // transform the data into json
       .then(function(data) {
-    
+
       var rows = data.results.bindings; // get the results
-      
+
       content.collection = rows.map(function (d) {
+
         var theDate = d.date.value;
-        var start = theDate.indexOf('');
-        var end = theDate.indexOf('?');
-        theDate = theDate.substring(start, end);
+        // var start = theDate.indexOf('');
+        // var end = theDate.indexOf('?');
+        // theDate = theDate.substring(start, end);
 
         return {
           image: d.img.value,
@@ -92,19 +94,27 @@ var renderPage = {
     sections.id = "myUL";
     imgdiv.appendChild(sections);
         content.collection.forEach(function(d){
+          var theDate = d.date;
+          var start = theDate.indexOf(' ') || theDate.indexOf('C') ;
+          var end = theDate.indexOf('?') || theDate.indexOf('1');
+          theDate = theDate.substring(start, end);
+          // console.log(theDate);
+
           var listItem = document.createElement('li');
           var linkDetail = document.createElement('a');
+          var tekst = document.createElement('p');
           var img = document.createElement('img');
-          
+
           img.src = d.image;
           img.title = d.title;
           linkDetail.href = "#detail/" + d.slug;
-          linkDetail.innerHTML = d.title;
+          tekst.innerHTML = theDate + '-' + d.title;
 
-          
+
           sections.appendChild(listItem);
           listItem.appendChild(linkDetail);
           linkDetail.appendChild(img);
+          linkDetail.appendChild(tekst);
       });
   },
   detailIMG: function(detail) {
@@ -136,7 +146,7 @@ var renderPage = {
       </div>
     `;
       } else {
-        console.log('error')
+        console.log('error');
       }
     });
     var detailEl = document.getElementById('spotify');
@@ -162,4 +172,3 @@ function myFunction() {
 
 app.init();
 content.router('images');
-console.log(content.collection.title)
