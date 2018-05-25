@@ -108,7 +108,7 @@ var renderPage = {
           img.src = d.image;
           img.title = d.title;
           linkDetail.href = "#detail/" + d.slug;
-          tekst.innerHTML = theDate;
+          tekst.innerHTML = theDate + '-' + d.title;
 
 
           sections.appendChild(listItem);
